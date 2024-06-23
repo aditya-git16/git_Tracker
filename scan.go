@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 	"os/user"
@@ -72,7 +71,7 @@ func sliceContains(slice []string , value string) bool{
 // dumpStringToFile writes the content to the file in 'filepath'
 func dumpStringSliceToFile(repos []string, filePath string) {
 	content := strings.Join(repos,"\n")
-	ioutil.WriteFile(filePath, []byte(content) , 0755)
+	os.WriteFile(filePath, []byte(content) , 0755)
 }
 
 // addNewSliceElementsToFile given a slice of string paths stores them in a file
