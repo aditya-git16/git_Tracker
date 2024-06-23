@@ -1,8 +1,10 @@
 package main
 
 import(
-	"github.com/go-git/go-git/v5"
-	"gopkg.in/src-d/go-git.v4/plumbing"
+	//"github.com/go-git/go-git/v5"
+	//"gopkg.in/src-d/go-git.v4/plumbing"
+	"gopkg.in/src-d/go-git.v4"
+	"gopkg.in/src-d/go-git.v4/plumbing/object"
 
 	"fmt"
 )
@@ -18,7 +20,7 @@ func fillCommits(email string , path string , commits map[int]int) map[int]int{
 	}
 
 	// get the HEAD ref
-	ref , err = repo.Head()
+	ref , err := repo.Head()
 	if err != nil {
 		panic(err)
 	}
@@ -63,7 +65,7 @@ func processRepositories(email string) map[int]int{
 	}
 
 	for _ , path := range repos{
-		commits := fillCommits(email , path , commits)
+		commits = fillCommits(email , path , commits)
 	}
 	return commits
 }
